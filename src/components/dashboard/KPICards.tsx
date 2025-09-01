@@ -17,7 +17,7 @@ interface KPICardsProps {
 
 const KPICard: React.FC<{ kpi: KPI }> = ({ kpi }) => {
   return (
-    <div className="card-kpi slide-up">
+    <div className="card-kpi dashboard-slide-up">
       <div className="space-y-4">
         <div>
           <h3 className="text-kpi-label">{kpi.label}</h3>

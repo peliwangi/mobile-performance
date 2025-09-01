@@ -173,12 +173,12 @@
   }
 
   /* Animation Classes */
-  .fade-in {
-    @apply animate-in fade-in duration-300;
+  .dashboard-fade-in {
+    animation: fadeIn 0.3s ease-out;
   }
   
-  .slide-up {
-    @apply animate-in slide-in-from-bottom-4 duration-300;
+  .dashboard-slide-up {
+    animation: slideUp 0.3s ease-out;
   }
   
   .chart-container {
@@ -203,6 +203,29 @@
   
   .shadow-floating {
     box-shadow: var(--shadow-floating);
+  }
+}
+
+/* Dashboard Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

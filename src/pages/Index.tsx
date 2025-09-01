@@ -224,7 +224,7 @@ const Index = () => {
           onRefresh={handleRefresh}
         />
         
-        <div className="space-y-8 fade-in">
+        <div className="space-y-8 dashboard-fade-in">
           <KPICards kpis={data.kpis} />
           
           <div className="analytics-grid">
