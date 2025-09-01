@@ -195,6 +195,17 @@
   }
 }
 
+/* Custom Utilities */
+@layer utilities {
+  .shadow-kpi {
+    box-shadow: var(--shadow-kpi);
+  }
+  
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
