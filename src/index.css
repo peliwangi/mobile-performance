@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Mobile Tracking Dashboard Design System - Professional Corporate Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Professional Blue-Gray Palette */
+    --background: 248 250 252; /* slate-50 */
+    --foreground: 215 25% 27%; /* slate-700 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card System */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 215 25% 27%;
+    --card-border: 220 13% 91%; /* slate-200 */
+    --card-shadow: 220 43% 11% / 0.04; /* subtle shadow */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Dashboard Primary - Corporate Blue */
+    --primary: 217 91% 60%; /* blue-500 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 85%; /* blue-200 */
+    --primary-dark: 217 91% 25%; /* blue-800 */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Performance Indicators */
+    --success: 142 71% 45%; /* green-600 */
+    --success-light: 142 69% 58%; /* green-500 */
+    --success-bg: 142 76% 94%; /* green-50 */
+    
+    --danger: 0 84% 60%; /* red-500 */
+    --danger-light: 0 91% 71%; /* red-400 */
+    --danger-bg: 0 86% 97%; /* red-50 */
+    
+    --warning: 45 93% 47%; /* amber-500 */
+    --warning-light: 45 97% 64%; /* amber-400 */
+    --warning-bg: 45 100% 96%; /* amber-50 */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Neutral Grays */
+    --muted: 215 20% 65%; /* slate-500 */
+    --muted-foreground: 215 16% 47%; /* slate-600 */
+    --muted-bg: 220 14% 96%; /* slate-100 */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Interactive Elements */
+    --border: 220 13% 91%; /* slate-200 */
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    --hover: 217 91% 95%; /* blue-50 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 40%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 35%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(248 250 252));
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 hsl(var(--card-shadow)), 0 1px 2px -1px hsl(var(--card-shadow));
+    --shadow-kpi: 0 4px 6px -1px hsl(var(--card-shadow)), 0 2px 4px -2px hsl(var(--card-shadow));
+    --shadow-floating: 0 10px 15px -3px hsl(var(--card-shadow)), 0 4px 6px -4px hsl(var(--card-shadow));
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Spacing & Sizing */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --header-height: 4rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,42 +78,120 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Dark mode - Keep minimal for corporate use */
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 215 28% 17%; /* slate-800 */
     --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
+    --card: 215 28% 17%;
     --card-foreground: 210 40% 98%;
+    --card-border: 215 25% 27%;
+    --card-shadow: 0 0% 0% / 0.2;
+    
+    --primary: 217 91% 70%; /* lighter blue for dark mode */
+    --primary-light: 217 91% 85%;
+    --primary-dark: 217 91% 40%;
+    
+    --muted: 215 20% 50%;
+    --muted-foreground: 215 16% 70%;
+    --muted-bg: 215 25% 27%;
+    
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --hover: 217 91% 15%;
+  }
+}
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+/* Dashboard Component Utilities */
+@layer components {
+  /* Dashboard Layout */
+  .dashboard-container {
+    @apply min-h-screen bg-gradient-to-br from-background to-muted-bg/30;
+  }
+  
+  .dashboard-header {
+    @apply h-16 bg-card border-b border-border shadow-sm;
+  }
+  
+  .dashboard-content {
+    @apply p-4 lg:p-6 space-y-6;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* Card Variants */
+  .card-base {
+    @apply bg-card rounded-lg border border-card-border;
+  }
+  
+  .card-elevated {
+    @apply card-base shadow-card hover:shadow-kpi transition-shadow duration-200;
+  }
+  
+  .card-kpi {
+    @apply card-elevated p-6 relative overflow-hidden;
+  }
+  
+  .card-analytics {
+    @apply card-elevated p-6;
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  /* Performance Indicators */
+  .indicator-positive {
+    @apply text-success bg-success-bg px-2 py-1 rounded-md text-sm font-medium;
+  }
+  
+  .indicator-negative {
+    @apply text-danger bg-danger-bg px-2 py-1 rounded-md text-sm font-medium;
+  }
+  
+  .indicator-neutral {
+    @apply text-muted bg-muted-bg px-2 py-1 rounded-md text-sm font-medium;
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+  /* Filter Controls */
+  .filter-select {
+    @apply bg-card border border-border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-colors;
+  }
+  
+  .filter-button {
+    @apply bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium hover:bg-primary-dark transition-colors;
+  }
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  /* Typography Variants */
+  .text-kpi-value {
+    @apply text-3xl font-bold text-foreground;
+  }
+  
+  .text-kpi-label {
+    @apply text-sm font-medium text-muted-foreground uppercase tracking-wide;
+  }
+  
+  .text-metric {
+    @apply text-lg font-semibold text-foreground;
+  }
+  
+  .text-change {
+    @apply text-sm font-medium;
+  }
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Animation Classes */
+  .fade-in {
+    @apply animate-in fade-in duration-300;
+  }
+  
+  .slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-300;
+  }
+  
+  .chart-container {
+    @apply relative h-64 w-full;
+  }
+  
+  /* Responsive Grid */
+  .kpi-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4;
+  }
+  
+  .analytics-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6;
   }
 }
 
