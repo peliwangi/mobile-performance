@@ -39,12 +39,12 @@ const BroadbandPack: React.FC<BroadbandPackProps> = ({ data }) => {
     const barWidth = chartWidth / (data.length * 3); // 2 bars + spacing per group
     const maxValue = Math.max(...data.flatMap(item => [item.previous, item.current]));
 
-    // Colors
+    // Colors - Using semantic tokens for red theme
     const colors = {
-      previous: 'hsl(220, 13%, 69%)', // muted
-      current: 'hsl(217, 91%, 60%)', // primary
-      text: 'hsl(215, 25%, 27%)', // foreground
-      grid: 'hsl(220, 13%, 91%)' // border
+      previous: 'hsl(0, 0%, 80%)', // light gray for previous
+      current: 'hsl(14, 91%, 52%)', // primary orange
+      text: 'hsl(0, 0%, 100%)', // white text for red background
+      grid: 'hsl(0, 0%, 90%)' // light grid
     };
 
     // Draw grid lines
