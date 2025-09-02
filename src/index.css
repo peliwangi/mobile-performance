@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Base Colors - Professional Blue-Gray Palette */
-    --background: 248 250 252; /* slate-50 */
-    --foreground: 215 25% 27%; /* slate-700 */
+    /* Base Colors - Red Theme */
+    --background: 0 65% 51%; /* red-500 */
+    --foreground: 0 0% 100%; /* white text for contrast */
 
     /* Card System */
     --card: 0 0% 100%; /* white */
